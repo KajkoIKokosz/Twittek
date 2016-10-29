@@ -1,0 +1,41 @@
+<?php
+    session_start();
+?>
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="CSS/styleShit.css" rel="stylesheet" type="text/css"/>
+        <script src="JS/jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="JS/logowanie.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id='logowanie'>
+            <form name='logIn' action='' method='post'>
+                <!--w przypadku wciśnięcia button 'createCount' wyłączona zostanie klasa hiddenLogging, która ukrywa obiekt-->
+                <input type='text' name='login' placeholder="username" id='username' class='logowanie hiddenLogging'>
+                <p>
+                <input type='text' name='email' placeholder="email" class='logowanie'>
+                <p>
+                <input type='password' name='passwd' placeholder="hasło" class='logowanie'>
+                <input type='password' name='passwd' placeholder="powtórz" class='logowanie hiddenLogging'>
+                <p>
+                <input type='submit' id='twitaj' value='Twitaj' name='twitaj' class='logowanie'><p>
+                <input type='submit' id='createCnt' value='Załóż' name='createCnt' class='logowanie hiddenLogging'><p>
+                <span id='lub' class='logowanie'>lub</span><p>
+                <button id='createCount' value='createCount' class='logowanie'>Załóż Twitka</button>
+                <a href=''>
+                    <button id='backLogging' value='backLogging' class='logowanie hiddenLogging'>Wróć</button>
+                </a>
+            </form>    
+        </div>
+       
+    </body>
+</html>

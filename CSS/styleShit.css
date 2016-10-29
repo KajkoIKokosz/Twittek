@@ -1,0 +1,12 @@
+
+.logowanie {
+    display: block;
+    text-align: center;
+    width: 100px; 
+}
+
+
+.hiddenLogging {
+    display: none;
+}
+

@@ -2,20 +2,23 @@
 include_once 'src/User.php';
 include_once 'src/DBConnectConfig.php';
 
-if(isset($_GET['username'])
-   && isset($_GET['userPasswd'])
-   && isset($_GET['usermail'])){
-        $name = $_GET['username'];
-        $passw = $_GET['userPasswd'];
-        $mail = $_GET['usermail'];
+
+ 
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    
+    if(isset($_POST['username'])
+    && isset($_POST['userPasswd'])
+    && isset($_POST['usermail'])){
+        $name = $_POST['username'];
+        $passw = $_POST['userPasswd'];
+        $mail = $_POST['usermail'];
 
         $user1 = new User();
         $user1->setUsername($name)->setPassword($passw)->setEmail($mail);
         $conn = DBConnectConfig::getDbConnection();
         $user1->saveToDB($conn);
     } //else echo "<h3>Eneter your data</h3>";
- 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    
     if(isset($_POST['userid'])){
         $id = $_POST['userid'];
         $conn = DBConnectConfig::getDbConnection();
@@ -37,13 +40,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-type" content="text/html; charset=ISO-8859-2" />
         <title></title>
     </head>
     <body>
         
         <hr>
-        <form action="" method="GET">
+        <h3>Utwórz konto</h3>
+        <form action="" method="POST">
             <label>LOGIN: 
                 <input type="text" name="username" placeholder="enter username">
             </label>
@@ -53,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <label>EMAIL:
                 <input type="email" name="usermail">
             </label><p>
-            <input type="submit" value="submit">
+            <input type="submit" value="GO!">
                 
         </form>
         
