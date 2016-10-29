@@ -105,6 +105,8 @@ class User{
                 print_r($result);
                 return null;
             }
+            $conn->close();
+            $conn = null;
 
         } else {
             echo "Zapytanie nie zostało poprawnie przeprowadzone.<br>"
@@ -112,5 +114,35 @@ class User{
         } // koniec if / else ($result)
 
     } // loadUserByID function end
+    
+    public static function loadAllUsers(mysqli $conn) {
+        $sql = "SELECT * FROM `users";
+        $result = $conn->query($sql);
+        $usersArray = array();
+        
+        if($result == true && $result->num_rows > 0) {
+            foreach($result as $row){
+                
+                $id = $row['id'];
+                $name = $row['username'];
+                $hashPasswd = $row['hashedPassword'];
+                $email = $row['email'];
+
+                $user = new User();
+                $user->setId($id)
+                  ->setUsername($name)
+                  ->setEmail($email)
+                  ->setPassword($hashPasswd);
+                
+                $usersArray[] = $user;
+            } // end of foreach loop
+            
+            foreach($usersArray as $nextUser){
+                print_r($nextUser);
+                echo "<br>";
+            }
+            return $usersArray;
+        } else return null;
+    } // loadAllUsers function end
     
 } // class user end
