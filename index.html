@@ -16,27 +16,33 @@ and open the template in the editor.
         <script src="JS/jquery-3.1.1.min.js" type="text/javascript"></script>
         <script src="JS/logowanie.js" type="text/javascript"></script>
     </head>
+    
     <body>
         <div id='logowanie'>
             <form name='logIn' action='' method='post'>
-                <!--w przypadku wciśnięcia button 'createCount' wyłączona zostanie klasa hiddenLoging, która ukrywa obiekt-->
-                <input type='text' name='login' placeholder="username" id='username' class='logowanie hiddenLoging'>
+                <!--w przypadku wciśnięcia button '#goToCountForm' wyłączona zostanie klasa hiddenLoging, która ukrywa obiekt-->
+                <!-- elementy klasy hiddenLoging początkowo są nie widoczne - stają sie widoczne dopiero po kliknięciu buttona
+                '#goToCountForm'-->
+                <input type='text' name='login' id='username' class='logowanie hiddenLoging fieldNotEmpty' placeholder="username"  >
                 <p>
-                <input type='text' name='email' placeholder="email" class='logowanie'>
+                <input type='text' name='email' id='email' placeholder="email" class='logowanie fieldNotEmpty'>
                 <p>
-                <input type='password' name='passwd' placeholder="hasło" id='passwd' class='logowanie'>
+                <input type='password' name='passwd' id='passwd' class='logowanie fieldNotEmpty' placeholder="hasło">
                 <p>
-                <input type='password' name='passwdRepeat' id="passwdRepeat" placeholder="powtórz"  class='logowanie hiddenLoging'>
+                <input type='password' name='passwdRepeat' id="passwdRepeat" class='logowanie hiddenLoging fieldNotEmpty' placeholder="powtórz">
                 <p>
-                <input type='submit' name='twitaj' id='twitaj' value='Twitaj' class='logowanie'><p>
-                <input type='submit' name='createCnt' id='createCnt' value='Załóż Twitka'  class='logowanie hiddenLoging'><p>
+                <input type='submit' name='twitaj' id='twitaj' class='logowanie' value='Twitaj' ><p>
+                <input type='submit'  id='createCount' class='logowanie hiddenLoging' value='Załóż Twitka'><p>
                 <span id='lub' class='logowanie'>lub</span><p>
-                <button id='createCount' value='createCount' class='logowanie'>Załóż Twitka</button>
+                <button name='goToCountForm' id='goToCountForm' class='logowanie' value='goToCountForm' >Załóż Twitka</button>
                 <a href=''>
                     <button id='backLoging' class='logowanie hiddenLoging' value='backLogging'>Wróć</button>
                 </a>
             </form>    
+            <div id='formComment'></div>
         </div>
+        
+        
        
     </body>
 </html>

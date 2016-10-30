@@ -10,7 +10,12 @@
     display: none;
 }
 
-.hasloOk {
+.poleOk {
     background-color: #8af671;
+}
+
+div #formComment {
+    font-size: 10pt;
+    color: red;
 }
 
