@@ -56,7 +56,7 @@ $(document).ready(function(){
     
     // event na buttonie 'Załóż Twitka' 2
     $('#createCount').on('click', function() {
-        event.preventDefault();
+        
         $('div #formComment').empty();
         var preventSubmitIfError = 0; // jeśli > 0, nie zostanie wywołany submit
         
@@ -85,14 +85,17 @@ $(document).ready(function(){
                 // console.log(errorNumber);
             });
             if ( errorNumber > 0 ) {
+                event.preventDefault();
                 $.each(errorLogingArray, function(index, value){
                     var errorMessage = $('<span id="emptyName">*' + errorLogingArray[index] + '</span><br>');
                     $('div #formComment').prepend(errorMessage);                   
                 });
             } else {
-                $('#createCount').submit();
+                // tu ewentualnie anuluj preventDefault
             }
-        } 
+        } else { // jeśli któreś z pól jest puste
+            event.preventDefault();
+        }
        
     }) // koniec obsługi buttona 'Załóż Twitka' 2
    
