@@ -4,6 +4,25 @@ $(document).ready(function(){
    // submitt nie wykona akcji.
    
     var errorLogingArray = {};
+    var minUserNameLength = 5;
+    var minPasswordLength = 5;
+    
+    //////// obsługa logowania /////////
+    $('#twitaj').on('click', function() {
+        $('div #formComment').empty();
+        if( $.trim( $('#email').val() ).length < minUserNameLength ) {
+            event.preventDefault();
+            var errorMessage = $('<span>*' + 'Niepoprawny adres email' + '</span><br>');
+            $('div #formComment').prepend(errorMessage); 
+        } else if ( $('#passwd').val().length <= minPasswordLength ) {
+            event.preventDefault();
+            var errorMessage = $('<span>*' + 'Zbyt krótkie hasło' + '</span><br>');
+            $('div #formComment').prepend(errorMessage); 
+        }
+    })
+    
+    
+    /////// obsługa załozenia konta /////////
    
    // event na buttonie 'Załóż Twitka' 1
     $('#goToCountForm').on('click', function(){
@@ -17,21 +36,24 @@ $(document).ready(function(){
     // sprawdzanie poprawności haseł
     $('#passwdRepeat, #passwd').on('keyup', function(){
         if($('#passwd').val() === $('#passwdRepeat').val()
-        && $('#passwd').val().length > 5){
+        && $('#passwd').val().length >= minPasswordLength){
            $('#passwd').addClass('poleOk');
            $('#passwdRepeat').addClass('poleOk');
-           delete errorLogingArray['passwd'];
+           delete errorLogingArray['passwd'];  
         } else {
             $('#passwdRepeat').removeClass('poleOk');
             $('#passwd').removeClass('poleOk');
             errorLogingArray['passwd'] = "hasła nie są identyczne";    
+            // komunikaty z tablicy błędów zostaną wyświetlone tylko
+            // przy użyciu przycisku '#createCount', a więc tylko przy zakładaniu nowego konta.
+            // Podczas logowania tablica 'errorLogingArray' na wszelki wypadek zostaje czyszczona.
         }
     }) // koniec sprawdzania poprawności haseł
     
     // obsługa pola #username
     $('#username').on('keyup', function() {
         if( $.isNumeric( $('#username').val() )
-            || $.trim( $('#username').val() ).length <= 4
+            || $.trim( $('#username').val() ).length < minUserNameLength
         ) {
            errorLogingArray['username'] = "Niepoprawny login";
            $('#username').removeClass('poleOk');
@@ -56,7 +78,6 @@ $(document).ready(function(){
     
     // event na buttonie 'Załóż Twitka' 2
     $('#createCount').on('click', function() {
-        
         $('div #formComment').empty();
         var preventSubmitIfError = 0; // jeśli > 0, nie zostanie wywołany submit
         
@@ -90,14 +111,15 @@ $(document).ready(function(){
                     var errorMessage = $('<span id="emptyName">*' + errorLogingArray[index] + '</span><br>');
                     $('div #formComment').prepend(errorMessage);                   
                 });
-            } else {
-                // tu ewentualnie anuluj preventDefault
-            }
+            } 
         } else { // jeśli któreś z pól jest puste
             event.preventDefault();
         }
        
     }) // koniec obsługi buttona 'Załóż Twitka' 2
+    
+    
+    
    
 }) // koniec DOM
 

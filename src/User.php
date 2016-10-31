@@ -1,5 +1,5 @@
 <?php
-require_once 'src/DBConnectConfig.php';
+include_once 'C:\xampp\htdocs\Twittek\src\DBConnectConfig.php';
 
 class User{
     private $id;

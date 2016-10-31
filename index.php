@@ -18,12 +18,12 @@ and open the template in the editor.
     </head>
     
     <body>
-        <div id='logowanie'>
+        <div class='logowanie'>
             <form name='logIn' action='src/formHandling.php' method='POST'>
                 <!--w przypadku wciśnięcia button '#goToCountForm' wyłączona zostanie klasa hiddenLoging, która ukrywa obiekt-->
                 <!-- elementy klasy hiddenLoging początkowo są nie widoczne - stają sie widoczne dopiero po kliknięciu buttona
                 '#goToCountForm'-->
-                <input type='text' name='login' id='username' class='logowanie hiddenLoging fieldNotEmpty' placeholder="username"  >
+                <input type='text' name='username' id='username' class='logowanie hiddenLoging fieldNotEmpty' placeholder="username"  >
                 <p>
                 <input type='text' name='email' id='email' placeholder="email" class='logowanie fieldNotEmpty'>
                 <p>
@@ -32,15 +32,18 @@ and open the template in the editor.
                 <input type='password' name='passwdRepeat' id="passwdRepeat" class='logowanie hiddenLoging fieldNotEmpty' placeholder="powtórz">
                 <p>
                 <input type='submit' name='twitaj' id='twitaj' class='logowanie' value='Twitaj' ><p>
-                <input type='submit'  id='createCount' class='logowanie hiddenLoging' value='Załóż Twitka'><p>
-                <span id='lub' class='logowanie'>lub</span><p>
+                <input type='submit' name="createCount" id='createCount' class='logowanie hiddenLoging' value='Załóż Twitka'><p>
+                <span id='lub' class='logowanie'>lub</span>
+                <p>
                 <button name='goToCountForm' id='goToCountForm' class='logowanie' value='goToCountForm' >Załóż Twitka</button>
-                <a href=''>
-                    <button id='backLoging' class='logowanie hiddenLoging' value='backLogging'>Wróć</button>
+                <a href='index.html'>
+                    <button name='backLoging' id='backLoging' class='logowanie hiddenLoging' value='backLogging'>Wróć</button>
                 </a>
             </form>    
-            <div id='formComment'></div>
+           <div id='formComment'></div>
         </div>
+        
+        
         
         
        
