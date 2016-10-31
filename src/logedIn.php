@@ -13,12 +13,18 @@
     <body> 
         <div id='container'>
             <div id='logedInH'>
-                <?php 
-                    if( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
-                        header('Location: ../index.php');
-                    }
-                     echo "T-witaj ". $_SESSION['username']; 
-                ?>
+                <div style='float: left; width: 800px;'>
+                    <?php 
+                        echo "T-witaj ".$_SESSION['username']; 
+                    ?>
+                </div>
+                <div style='float: left;'>
+                    <form action="logout.php">
+                        <button name='logout'class='myButton'>Wyloguj</button>
+                    </form>
+                </div>
+                <div style='clear: both;'></div>
+                
             </div>
             <div id='left'>
                 
