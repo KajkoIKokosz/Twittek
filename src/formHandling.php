@@ -24,6 +24,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             $hash = $row['hashedPassword'];
             $ifPasswordOk = password_verify($password, $hash);
             if( $ifPasswordOk ) {
+                $_SESSION['id'] = $row['id'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['username'] = $row['username'];
                 header('Location: logedIn.php');
@@ -57,7 +58,9 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                  ->saveToDB($conn);
 
             if( $user->getId() != -1 ){
+                $_SESSION['id'] = $user->getId();
                 $_SESSION['username'] = $user->getUsername();
+                $_SESSION['email'] = $user->getEmail();
                 header('Location: logedIn.php');
             } else {
                 echo "Coś poszło nie tak";

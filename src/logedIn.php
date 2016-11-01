@@ -31,9 +31,9 @@
             </div>
             <div id='center'>
                 <div id='zaTwituj'>
-                    <form>
+                    <form action='postHandling.php' method='POST'>
                         <label>Twitnij se:<br>
-                            <textarea name="twityourself" class='textArea' placeholder="Tu można twitować i robić różne inne rzeczy"></textarea>
+                            <textarea name="twitYourself" class='textArea' placeholder="Tu można twitować i robić różne inne rzeczy"></textarea>
                         </label>
                         <br>
                         <input type='submit' value='Twitnij se' class='myButton'>

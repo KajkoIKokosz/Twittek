@@ -3,10 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 29 Paź 2016, 07:25
--- Wersja serwera: 10.1.13-MariaDB
--- Wersja PHP: 5.6.23
---
+-- Czas generowania: 01 Lis 2016, 10:47
+-- Wersja serwera: 10.1.10-MariaDB
+-- Wersja PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -24,48 +23,87 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `twits`
+--
+
+CREATE TABLE `twits` (
+  `id` int(11) NOT NULL,
+  `twit` text COLLATE utf8_polish_ci NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `twits`
+--
+
+INSERT INTO `twits` (`id`, `twit`, `user_id`) VALUES
+(1, 'Pierwszy posta jana papugi', 34),
+(2, 'Pierwszy post Pingwinka Kleofaska', 35);
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `hashedPassword` varchar(60) NOT NULL,
-  `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `username` varchar(255) COLLATE utf8_polish_ci NOT NULL,
+  `hashedPassword` varchar(255) COLLATE utf8_polish_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_polish_ci NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `hashedPassword`, `email`) VALUES
-(34, 'Stefaniaa', '$2y$10$B7cvbzVtlp35uT..DhegQ.hbpCCqKp4ArMAxxvuB3A.v.G7K4qMgC', 'aaa@bbb'),
-(39, 'Stefan', '$2y$10$pMf3bNVO2imVievLOOewqeD3vtHc7mCr2Yn8WLVPdlYaxO65ncFLS', 'bbb@aaa'),
-(40, 'Kleofas', '$2y$10$ozwXEx80tctLmyBICuYanuP9h9bYKwu.d7eozs9SMoDVObv3vXdey', 'Kleofas@pingwin.pl'),
-(42, 'Smok', '$2y$10$s.soUaNrVsuHk0XUbQTgiO6/gGu8nLz1v5ZLeJ9rs00wIG7Gh3Lyq', 'smok@zupaogorkowa.pl'),
-(47, 'jÃ³zef', '$2y$10$ygGXMEQt4IUHi0AOb60oEOgectWmrQnBPep.yke4VODpfni5yHchm', 'kartofle@wworze'),
-(68, 'norma', '$2y$10$MJFZhGf/XaYs8tRB4qY6..g8POkpnmEElZ7t7Q0vX9TEIFNMC2SKu', 'dupa@dupa');
+INSERT INTO `users` (`id`, `username`, `hashedPassword`, `email`, `create_date`) VALUES
+(34, 'Jan Papuga', '$2y$10$3wzWo8wOtPo2FEPde5EaY.WheONMiet36u08lDjbMDPgPLTjDx/p2', 'jan@papuga.pl', '2016-10-31 22:17:15'),
+(35, 'Pingwin Kleofasek', '$2y$10$C2rC85QtTj3zJozsbXi0KefDroJJaJcI2qTtU03htOr9pnzuFE/na', 'pingwin@kleofasek.pl', '2016-11-01 08:32:38');
 
 --
 -- Indeksy dla zrzutów tabel
 --
 
 --
+-- Indexes for table `twits`
+--
+ALTER TABLE `twits`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `foregKey` (`user_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `unikalnyEmail` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT dla tabeli `twits`
+--
+ALTER TABLE `twits`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+--
+-- Ograniczenia dla zrzutów tabel
+--
+
+--
+-- Ograniczenia dla tabeli `twits`
+--
+ALTER TABLE `twits`
+  ADD CONSTRAINT `foregKey` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

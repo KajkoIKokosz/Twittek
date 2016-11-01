@@ -27,8 +27,8 @@ $(document).ready(function(){
    // event na buttonie 'Załóż Twitka' 1
     $('#goToCountForm').on('click', function(){
             event.preventDefault();
+            $('div #formComment').empty();
             $('.hiddenLoging').slideDown(200);
-           //$('#lub').css('display','none');
             $('#goToCountForm').css('display','none');
             $('#twitaj').css('display','none');
     }) // koniec 'Załóż Twitka' 1
