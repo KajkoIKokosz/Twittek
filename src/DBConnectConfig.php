@@ -12,7 +12,7 @@ class DBConnectConfig{
         if($conn->errno > 0) {
             die("Nie udało się ustanowić połączenia: ".$conn->error."<br>");
         } else {
-            echo "Połączenie ustanowione.<br>";
+            //echo "Połączenie ustanowione.<br>";
             return $conn;
         }
     }

@@ -2,6 +2,7 @@
 session_start();
 include_once 'DBConnectConfig.php';
 
+// dodawanie nowego twita
 if(  $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     if ( isset($_POST['twitYourself']) ) {
         $conn = DBConnectConfig::getDbConnection();
@@ -15,6 +16,8 @@ if(  $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             echo "coś poszło nie tak z Twoim Twitkiem"; 
         }
     }
-}
+} // koniec dodawania nowego twita
+
+// wyświetlanie twitów
 
 ?>
