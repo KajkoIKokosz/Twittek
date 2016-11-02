@@ -28,8 +28,12 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['username'] = $row['username'];
                 header('Location: logedIn.php');
+            } else {
+                echo "Podano niewłaściwe hasło. Spróbuj jeszcze raz.";
             }
-        }
+        } else {
+                echo "Nie ma takiego użytkownika. Spróbuj jeszcze raz.";
+            }
     }
    
  // obsługa tworzenia nowego konta

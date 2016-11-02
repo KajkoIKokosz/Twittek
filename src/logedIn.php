@@ -121,11 +121,42 @@
                                 </div>";
                             }
                         }
+                        $conn->close();
+                        $conn = null;
                     ?>
                 </div>
             </div> 
             <div id='right'>
-                
+                <h3>Twoje wiadomości: </h3>
+                <?php
+                    $conn = DBConnectConfig::getDbConnection();
+                    $sql = "SELECT m.id as id, m.receiver_id as receivId, m.message AS message, u.username AS senderName, m.received AS received
+                            FROM messages m JOIN `users` u
+                            ON m.sender_id = u.id 
+                            ORDER BY m.create_date DESC";
+                    $result = $conn->query($sql);
+                    if ( $result->num_rows > 0 ) {
+                        
+                        foreach ( $result as $row ) {
+                            if ($row['receivId'] == $_SESSION['id']) {
+                                if ($row['received'] == null) {
+                                    $old = 'purple_col';
+                                } else {
+                                    $old = 'marrow_col';
+                                }
+                                echo "<div class='received_msg ".$old."'>
+                                        <u>od {$row['senderName']}:</u>
+                                        <br>
+                                        {$row['message']}
+                                     </div>
+                                     <hr>";
+                                $sql = "UPDATE TABLE messages SET received = 1 WHERE id = {$row['id']}";
+                                $conn->query($sql);
+    // tutaj ewentualnie jakaś obsługa błędów
+                            }    
+                        }
+                    }
+                ?>
             </div> 
             <div id='foohter'>
                 

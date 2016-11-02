@@ -1,6 +1,7 @@
 div .printedtwit {
     display: block;
     background-color: #c4e3f3;
+    max-width: 600px;
 }
 
 .logowanie {
@@ -45,7 +46,7 @@ div.defaultBody {
 }
 
 #logedInH{
-    background-color: #dd921f;
+    background-color: #d8b8b8;
     min-height: 50px;
     padding: 7px;
     vertical-align: middle;
@@ -53,28 +54,28 @@ div.defaultBody {
 
 #left{
     float: left;
-    background-color: #f9ce69;
+    background-color: #d8b8b8;
     width: 200px;
     min-height: 1000px;
 }
 
 #center{
     float: left;
-    background-color: #fff8cd;
+    background-color: #cfcfda;
     width: 600px;
     height: 1000px;
 }
 
 #right{
     float: left;
-    background-color: #e7a72e;
+    background-color: #bea0a7;
     width: 200px;
     min-height: 1000px;
 }
 
 #foohter {
     clear: both;
-    background-color: #dd921f;
+    background-color: #bea0a7;
     min-height: 70px;
 }
 
@@ -88,6 +89,19 @@ div.defaultBody {
     right: 10px;
 }
 
+#message2friend {
+    position: relative;
+    width: 400px;
+    bottom: 400px;
+}
+
+.purple_col {
+    color: purple;
+}
+
+.marrow_col {
+    color: crimson;
+}
 
 
 
