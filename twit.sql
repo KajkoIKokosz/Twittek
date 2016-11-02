@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Struktura tabeli dla tabeli `friendships`
 --
 
-CREATE DATABASE IF NOT EXISTS twit
 
 
 CREATE TABLE `friendships` (

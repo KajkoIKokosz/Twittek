@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once 'C:\xampp\htdocs\Twittek\src\User.php';
-include_once 'C:\xampp\htdocs\Twittek\src\DBConnectConfig.php';
+include_once 'User.php';
+include_once 'DBConnectConfig.php';
 
 // obsługa formularza logowania
 
